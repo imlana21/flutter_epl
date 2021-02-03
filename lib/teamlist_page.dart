@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_liga_inggris/teamdetail_page.dart';
 
 class TeamPage extends StatelessWidget {
   @override
@@ -24,7 +25,11 @@ class TeamPage extends StatelessWidget {
           FlatButton(
             padding: EdgeInsets.all(8),
             color: Colors.grey[200],
-            onPressed: () {  },
+            onPressed: () { 
+              Navigator.push(context, MaterialPageRoute(builder: (context){
+                return TeamDetailPage();
+              }));
+            },
             child: Column(
               children: <Widget>[
                 Container(

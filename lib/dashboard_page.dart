@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_liga_inggris/teamlist_page.dart';
 import 'package:flutter_liga_inggris/classemen_page.dart';
+import 'package:flutter_liga_inggris/match_page.dart';
 
 class DashboardPage extends StatelessWidget {
   final TextStyle style = TextStyle(
@@ -48,7 +49,7 @@ class DashboardPage extends StatelessWidget {
                   ),
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return ClassemenPage();
+                      return MatchPage();
                     }));
                   }, 
                 ),
