@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_liga_inggris/dashboard_page.dart';
+import 'package:flutter_team_inggris/teamlist_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'EPL',
       theme: ThemeData.light(),
-      home: DashboardPage(),
+      home: TeamListPage(),
       // DashboardPage(),
     );
   }

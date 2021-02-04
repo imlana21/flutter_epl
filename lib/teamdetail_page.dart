@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_team_inggris/model/teamlist.dart';
 
 class TeamDetailPage extends StatelessWidget {
+  final Team data;
+
+  TeamDetailPage(
+    {this.data}
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Team Name'
+          'Team'
         ),
         leading: IconButton(
           onPressed: () {
@@ -14,6 +21,9 @@ class TeamDetailPage extends StatelessWidget {
           },
           icon: Icon(Icons.arrow_back),
         ),
+        actions: [
+          FavoriteButton()
+        ],
       ),
       body: ListView(
         children: <Widget> [
@@ -26,7 +36,7 @@ class TeamDetailPage extends StatelessWidget {
                 Expanded(
                   flex: 1,
                   child: Container(
-                    child: Image.asset('images/team_mu.png'),
+                    child: Image.asset(data.crestUrl),
                     alignment: Alignment.centerLeft,
                     height: 120,
                   ),
@@ -34,7 +44,7 @@ class TeamDetailPage extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'Manchester United',
+                    data.name,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18
@@ -64,13 +74,13 @@ class TeamDetailPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
-                  'Full Name',
+                  'Code Name',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  'Manchester United',
+                  data.tla
                 )
               ],
             ),
@@ -89,7 +99,7 @@ class TeamDetailPage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Manchester United',
+                  data.name,
                 )
               ],
             ),
@@ -102,13 +112,13 @@ class TeamDetailPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
-                  'Full Name',
+                  'Veneu',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  'Manchester United',
+                  data.venue
                 )
               ],
             ),
@@ -121,13 +131,13 @@ class TeamDetailPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
-                  'Full Name',
+                  'Address',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  'Manchester United',
+                  data.address
                 )
               ],
             ),
@@ -140,13 +150,13 @@ class TeamDetailPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
-                  'Full Name',
+                  'Country',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  'Manchester United',
+                  data.areaName
                 )
               ],
             ),
@@ -159,13 +169,13 @@ class TeamDetailPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
-                  'Full Name',
+                  'Phone',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  'Manchester United',
+                  data.phone == null ? '-' : data.phone
                 )
               ],
             ),
@@ -178,19 +188,61 @@ class TeamDetailPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
-                  'Full Name',
+                  'Website',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  'Manchester United',
+                  data.website,
+                )
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Text(
+                  'Email',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  data.email == null ? '-' : data.email,
                 )
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class FavoriteButton extends StatefulWidget {
+  @override
+  _FavoriteButtonState createState() => _FavoriteButtonState();
+}
+
+class _FavoriteButtonState extends State<FavoriteButton> {
+  bool isFavorite = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(
+        isFavorite ? Icons.favorite : Icons.favorite_border
+      ),
+      onPressed: () {
+        setState(() {
+          isFavorite = !isFavorite;
+        });
+      },
     );
   }
 }
