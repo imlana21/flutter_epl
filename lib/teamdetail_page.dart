@@ -5,7 +5,7 @@ class TeamDetailPage extends StatelessWidget {
   final Team data;
 
   TeamDetailPage(
-    {this.data}
+    {@required this.data}
   );
 
   @override
